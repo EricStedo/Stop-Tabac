@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuitSmart - Arrêt Tabac</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header">
+        <h1>🚭 QuitSmart</h1>
+        <p>Votre compagnon pour arrêter de fumer</p>
+        <div style="margin-top: 15px; padding: 10px; background: rgba(255, 255, 255, 0.1); border-radius: 10px; backdrop-filter: blur(5px);">
+            <div style="font-size: 1.5em; font-weight: bold; margin-bottom: 5px;">⏸️ PAUSE</div>
+            <div style="font-size: 0.9em; opacity: 0.9;">Formation & Bien-être en Entreprise</div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <!-- Statistiques du jour -->
+        <div class="stats-card">
+            <h2>Aujourd'hui</h2>
+            <div class="today-count" id="todayCount">0</div>
+            <p>cigarettes fumées</p>
+            
+            <div class="objective">
+                <p><strong>Objectif du jour :</strong> <span id="dailyObjective">8</span> cigarettes</p>
+                <div class="progress-ring">
+                    <svg>
+                        <circle class="bg" cx="60" cy="60" r="50"></circle>
+                        <circle class="progress" cx="60" cy="60" r="50" id="progressCircle"></circle>
+                    </svg>
+                    <div class="progress-text" id="progressText">0%</div>
+                </div>
+            </div>
+
+            <button class="add-cigarette-btn" onclick="addCigarette()">
+                + 1 cigarette
+            </button>
+            
+            <div id="dailyMessage"></div>
+        </div>
+
+        <!-- Graphique de la semaine -->
+        <div class="chart-container">
+            <div class="chart-title">📊 Graphique de la semaine</div>
+            <div class="chart" id="weekChart"></div>
+        </div>
+
+        <!-- Onglets -->
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('achievements')">🏆 Succès</button>
+            <button class="tab" onclick="showTab('health')">❤️ Santé</button>
+            <button class="tab" onclick="showTab('savings')">💰 Économies</button>
+            <button class="tab" onclick="showTab('motivation')">💪 Motivation</button>
+        </div>
+
+        <!-- Contenu des onglets -->
+        <div id="achievements" class="tab-content active">
+            <h3>🏆 Vos Succès</h3>
+            <div class="achievement unlocked">
+                <h4>🔥 Premier jour</h4>
+                <p>Vous avez commencé votre parcours !</p>
+            </div>
+            <div class="achievement" id="achievement7days">
+                <h4>📅 7 jours</h4>
+                <p>Une semaine sans cigarette</p>
+            </div>
+            <div class="achievement" id="achievement30days">
+                <h4>🌟 30 jours</h4>
+                <p>Un mois de liberté !</p>
+            </div>
+        </div>
+
+        <div id="health" class="tab-content">
+            <h3>❤️ Bénéfices Santé</h3>
+            <div class="health-benefit">
+                <h4>⏰ Après 20 minutes</h4>
+                <p>Votre rythme cardiaque et votre pression artérielle diminuent</p>
+            </div>
+            <div class="health-benefit">
+                <h4>🫁 Après 12 heures</h4>
+                <p>Le taux de monoxyde de carbone dans votre sang revient à la normale</p>
+            </div>
+            <div class="health-benefit">
+                <h4>💨 Après 2 semaines</h4>
+                <p>Votre circulation s'améliore et votre fonction pulmonaire augmente</p>
+            </div>
+        </div>
+
+        <div id="savings" class="tab-content">
+            <h3>💰 Économies Réalisées</h3>
+            <div class="savings">
+                <div class="savings-amount" id="totalSavings">0€</div>
+                <p>économisés depuis le début</p>
+            </div>
+            <p><strong>💸 Économies par jour :</strong> <span id="dailySavings">0€</span></p>
+            <p><strong>📦 Paquets évités :</strong> <span id="packsAvoided">0</span></p>
+        </div>
+
+        <div id="motivation" class="tab-content">
+            <h3>💪 Motivation</h3>
+            <div class="motivational-quote" id="motivationalQuote">
+                "Chaque cigarette non fumée est une victoire sur vous-même."
+            </div>
+            <button class="emergency-btn" onclick="showEmergencyHelp()">
+                🆘 J'ai envie de fumer !
+            </button>
+        </div>
+    </div>
+
+    <!-- Branding Pause -->
+    <div class="pause-branding">
+        <span class="pause-logo">⏸️</span>
+        <span>Développé par <strong>PAUSE</strong></span>
+    </div>
+
+    <!-- Modal d'aide d'urgence -->
+    <div id="emergencyModal" class="modal">
+        <div class="modal-content">
+            <h2>🆘 Résistez à l'envie !</h2>
+            <p id="emergencyTip"></p>
+            <button class="close-btn" onclick="closeEmergencyModal()">J'ai résisté !</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
